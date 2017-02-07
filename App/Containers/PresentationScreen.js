@@ -43,12 +43,24 @@ class PresentationScreen extends React.Component {
     )
   }
 
+  renderGame () {
+    const { user } = this.props
+    return (
+      <View style={styles.container}>
+        <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
+        <View style={styles.centered}>
+          <Text style={styles.sectionText}>{I18n.t('welcome')} {user.email}</Text>
+        </View>
+      </View>
+    )
+  }
+
   render () {
     const { loggedIn } = this.props
 
     return (
       <View style={styles.mainContainer}>
-        {this.props.loggedIn ? null : this.renderLoginIntro()}
+        {this.props.loggedIn ? this.renderGame() : this.renderLoginIntro()}
       </View>
     )
   }
@@ -57,6 +69,7 @@ class PresentationScreen extends React.Component {
 const mapStateToProps = (state) => {
   return {
     loggedIn: isLoggedIn(state.login),
+    user: state.login.user,
   }
 }
 
