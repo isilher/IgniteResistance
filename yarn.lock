@@ -2071,6 +2071,10 @@ decompress@^3.0.0:
     vinyl-assign "^1.0.1"
     vinyl-fs "^2.2.0"
 
+dedent@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.6.0.tgz#0e6da8f0ce52838ef5cec5c8f9396b0c1b64a3cb"
+
 deep-diff@0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.4.tgz#aac5c39952236abe5f037a2349060ba01b00ae48"
@@ -3606,7 +3610,7 @@ interpret@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.1.tgz#d579fb7f693b858004947af39fa0db49f795602c"
 
-invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1:
+invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -4372,6 +4376,18 @@ loose-envify@^1.0.0, loose-envify@^1.1.0:
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
   dependencies:
     js-tokens "^3.0.0"
+
+lottie-ios@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/lottie-ios/-/lottie-ios-1.0.2.tgz#8c6ec0a9a349a3816c597dc975505f6df8b4c17b"
+
+lottie-react-native@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/lottie-react-native/-/lottie-react-native-1.0.5.tgz#c02b31f19d22ebe04271a0ef7cc20a9195d4b330"
+  dependencies:
+    invariant "^2.2.2"
+    lottie-ios "^1.0.2"
+    react-native-safe-module "^1.1.0"
 
 loud-rejection@^1.0.0, loud-rejection@^1.2.0:
   version "1.6.0"
@@ -5432,6 +5448,12 @@ react-native-router-flux@^3.37.0:
     react-native-experimental-navigation "0.26.x"
     react-native-tabs "^1.0.9"
     react-static-container "1.0.1"
+
+react-native-safe-module@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-safe-module/-/react-native-safe-module-1.1.0.tgz#c9eed0f6ed00afed6d4b37c4ccaee67de80e7ddb"
+  dependencies:
+    dedent "^0.6.0"
 
 react-native-tabs@^1.0.9:
   version "1.0.9"

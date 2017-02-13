@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { ScrollView, Text, Image, View, Animated } from 'react-native'
+import Animation from 'lottie-react-native';
 import { Images } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -17,13 +18,20 @@ class PresentationScreen extends React.Component {
     super(props);
     const scrollY = new Animated.Value(0)
     const scrollToBgColor = scrollY.interpolate({
-      inputRange: [0, 500],
+      inputRange: [0, 650],
       outputRange: ['rgb(229, 214, 48)', 'rgb(153, 47, 21)'],
       extrapolate: 'clamp'
     })
+    const scrollToProgress = scrollY.interpolate({
+      inputRange: [0, 650],
+      outputRange: [0, 0.1],
+      extrapolate: 'clamp'
+    })
+
     this.state = {
       scrollY,
       scrollToBgColor,
+      scrollToProgress,
     };
   }
 
@@ -59,14 +67,23 @@ class PresentationScreen extends React.Component {
 
   renderGame () {
     const { user } = this.props
-    const { scrollY, scrollToBgColor } = this.state
+    const { scrollY, scrollToBgColor, scrollToProgress } = this.state
 
     return (
       <View style={styles.container}>
         <Animated.View
           style={[styles.backgroundImage, {backgroundColor: scrollToBgColor}]}
           resizeMode='stretch'
-        />
+        >
+          <Animation
+            style={{
+              alignSelf: 'stretch',
+              height: 610,
+            }}
+            source={require('../Animations/lottie.json')}
+            progress={scrollToProgress}
+          />
+        </Animated.View>
         <View style={styles.centered}>
           <Text style={styles.sectionText}>{I18n.t('welcome')} {user.email}</Text>
           <Text style={styles.sectionText}>Indicate how much you trust Pablo</Text>
