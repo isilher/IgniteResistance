@@ -44,7 +44,13 @@ const ApplicationStyles = {
       padding: Metrics.smallMargin,
       marginBottom: Metrics.smallMargin,
       marginHorizontal: Metrics.smallMargin
-    }
+    },
+    scrollViewText: {
+      color: Colors.snow,
+      marginVertical: 20,
+      textAlign: 'center',
+      fontWeight: 'bold'
+    },
   },
   darkLabelContainer: {
     backgroundColor: Colors.cloud,
@@ -71,7 +77,7 @@ const ApplicationStyles = {
     borderColor: Colors.ember,
     alignItems: 'center',
     textAlign: 'center'
-  }
+  },
 }
 
 export default ApplicationStyles

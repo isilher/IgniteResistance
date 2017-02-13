@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View } from 'react-native'
+import { ScrollView, Text, Image, View, Animated } from 'react-native'
 import { Images } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -13,6 +13,20 @@ import { connect } from 'react-redux'
 import styles from './Styles/PresentationScreenStyle'
 
 class PresentationScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    const scrollY = new Animated.Value(0)
+    const scrollToBgColor = scrollY.interpolate({
+      inputRange: [0, 500],
+      outputRange: ['rgb(229, 214, 48)', 'rgb(153, 47, 21)'],
+      extrapolate: 'clamp'
+    })
+    this.state = {
+      scrollY,
+      scrollToBgColor,
+    };
+  }
+
   componentWillReceiveProps (nextProps) {
     const { loggedIn } = nextProps
   }
@@ -45,12 +59,45 @@ class PresentationScreen extends React.Component {
 
   renderGame () {
     const { user } = this.props
+    const { scrollY, scrollToBgColor } = this.state
+
     return (
       <View style={styles.container}>
-        <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
+        <Animated.View
+          style={[styles.backgroundImage, {backgroundColor: scrollToBgColor}]}
+          resizeMode='stretch'
+        />
         <View style={styles.centered}>
           <Text style={styles.sectionText}>{I18n.t('welcome')} {user.email}</Text>
+          <Text style={styles.sectionText}>Indicate how much you trust Pablo</Text>
         </View>
+        <ScrollView
+          scrollEventThrottle={5}
+          onScroll={Animated.event(
+            [{nativeEvent: {contentOffset: {y: scrollY}}}]
+          )}
+        >
+          <Text style={styles.scrollViewText}>With my life</Text>
+          <Text style={styles.scrollViewText}>2</Text>
+          <Text style={styles.scrollViewText}>3</Text>
+          <Text style={styles.scrollViewText}>4</Text>
+          <Text style={styles.scrollViewText}>5</Text>
+          <Text style={styles.scrollViewText}>6</Text>
+          <Text style={styles.scrollViewText}>7</Text>
+          <Text style={styles.scrollViewText}>8</Text>
+          <Text style={styles.scrollViewText}>9</Text>
+          <Text style={styles.scrollViewText}>As far as I can throw him</Text>
+          <Text style={styles.scrollViewText}>11</Text>
+          <Text style={styles.scrollViewText}>12</Text>
+          <Text style={styles.scrollViewText}>13</Text>
+          <Text style={styles.scrollViewText}>14</Text>
+          <Text style={styles.scrollViewText}>15</Text>
+          <Text style={styles.scrollViewText}>16</Text>
+          <Text style={styles.scrollViewText}>17</Text>
+          <Text style={styles.scrollViewText}>18</Text>
+          <Text style={styles.scrollViewText}>19</Text>
+          <Text style={styles.scrollViewText}>Are you kidding me? Not for a dime!</Text>
+        </ScrollView>
       </View>
     )
   }
