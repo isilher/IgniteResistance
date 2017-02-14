@@ -41,9 +41,9 @@ class DrawerContent extends Component {
     NavigationActions.apiTesting()
   }
 
-  handlePressTheme = () => {
+  handlePressToday = () => {
     this.toggleDrawer()
-    NavigationActions.theme()
+    NavigationActions.today()
   }
 
   handlePressDevice = () => {
@@ -69,7 +69,7 @@ class DrawerContent extends Component {
         <DrawerButton text='Component Examples' onPress={this.handlePressComponents} />
         <DrawerButton text='Usage Examples' onPress={this.handlePressUsage} />
         <DrawerButton text='API Testing' onPress={this.handlePressAPI} />
-        <DrawerButton text='Themes' onPress={this.handlePressTheme} />
+        <DrawerButton text='Today' onPress={this.handlePressToday} />
         <DrawerButton text='Device Info' onPress={this.handlePressDevice} />
         { this.props.loggedIn ? this.renderLogoutButton() : null }
       </ScrollView>
