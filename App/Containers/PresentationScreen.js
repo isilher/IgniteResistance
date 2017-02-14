@@ -87,6 +87,15 @@ class PresentationScreen extends React.Component {
         <View style={styles.centered}>
           <Text style={styles.sectionText}>{I18n.t('welcome')}</Text>
           <Text style={styles.sectionText}>Indicate how much you trust Pablo</Text>
+          <RoundedButton
+            onPress={() => {
+              Animated.timing(
+                sliderVal,
+                {toValue: 500}
+              ).start()
+            }}          >
+            I never trust Pablo!
+          </RoundedButton>
         </View>
         <Slider
         style={{transform: [{translateY: 200}, {rotate:'90deg'}]}}
